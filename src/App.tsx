@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/layout/header/Header';
 import Content from './components/layout/content/Content';
 import Footer from './components/layout/footer/Footer';
-import ErrorPage from './pages/error/ErrorPage';
+import ErrorPage from './pages/Error/ErrorPage';
 import { store, persistor } from './store/store';
 
 const CLIENT_ID = '362557444672-hnm4kms5mtck0f67inaoqdbuvjare2bt.apps.googleusercontent.com';
