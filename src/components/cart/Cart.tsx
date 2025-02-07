@@ -1,20 +1,26 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-export interface ICartItem {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-}
+import { RootState } from '../../store/store';
+import { useAuth } from '../../context/AuthContext';
+import { clearCartItems } from '../../utils/cartUtils/cartUtils';
 
 interface CartProps {
-  cartItems: ICartItem[];
   onClose: () => void;
   onOrder: () => void;
 }
 
-const Cart: React.FC<CartProps> = ({ cartItems, onClose, onOrder }) => {
+const Cart: React.FC<CartProps> = ({ onClose, onOrder }) => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const context = useAuth();
+
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  const handleOrder = () => {
+    onOrder();
+  };
 
   return (
     <div className="modal fade show d-block" tabIndex={-1} role="dialog" style={{ background: 'rgba(0, 0, 0, 0.5)' }}>
@@ -40,7 +46,9 @@ const Cart: React.FC<CartProps> = ({ cartItems, onClose, onOrder }) => {
             ) : (
               <p className="text-center">Your cart is empty</p>
             )}
+
             <hr />
+
             <h5 className="text-end">Total: ${totalPrice.toFixed(2)}</h5>
           </div>
           <div className="modal-footer">
@@ -48,9 +56,22 @@ const Cart: React.FC<CartProps> = ({ cartItems, onClose, onOrder }) => {
               Close
             </button>
             {cartItems.length > 0 && (
-              <button className="btn btn-success" onClick={onOrder}>
-                Order Now
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  clearCartItems(dispatch);
+                }}>
+                Clear cart <i className="bi bi-cart-x-fill"></i>
               </button>
+            )}
+            {!context.isLoggedIn ? (
+              <p className="text-bg-danger">u need to login, first to place order</p>
+            ) : (
+              cartItems.length > 0 && (
+                <button className="btn btn-success" onClick={handleOrder}>
+                  Order Now
+                </button>
+              )
             )}
           </div>
         </div>

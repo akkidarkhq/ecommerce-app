@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { IProduct } from '../../../../../interfaces/product';
 import ProductDetails from '../ProductDetails/ProductDetails';
-import Cart, { ICartItem } from '../../../../cart/Cart';
+import { addToCart } from '../../../../../utils/cartUtils/cartUtils';
 
 interface ProductCardProps {
   product: IProduct; // Type for the prop
@@ -10,50 +11,29 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
-  const [showCartModal, setShowCartModal] = useState(false);
-  const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    if (product.id === undefined || product.title === undefined || product.price === undefined) {
-      console.error('Product is missing required fields.');
-      return;
+    if (product.id !== undefined) {
+      addToCart(dispatch, {
+        ...product,
+        quantity: 1,
+      });
+    } else {
+      console.error('Product ID is undefined. Cannot add to cart.');
     }
-
-    setCartItems((prev) => {
-      const existingItem = prev.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? {
-                ...item,
-                quantity: item.quantity + 1,
-              }
-            : item,
-        );
-      } else {
-        return [
-          ...prev,
-          {
-            id: product.id!,
-            title: product.title!,
-            price: product.price!,
-            quantity: 1,
-          },
-        ];
-      }
-    });
-
-    setShowCartModal(true);
   };
 
   return (
     <div
-      className="card h-100"
+      className="card h-100 w-100 shadow"
       style={{
-        width: '400px;',
-        height: '400px;',
+        width: '350px',
+        height: '400px',
       }}>
       <img
+        onClick={() => setShowDetailsModal(true)}
         src={product.image}
         className="card-img-top img-thumbnail object-fit-contain"
         style={{
@@ -77,13 +57,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
       </div>
       {showDetailsModal && <ProductDetails product={product} onClose={() => setShowDetailsModal(false)} />}
-      {showCartModal && (
-        <Cart
-          cartItems={cartItems}
-          onClose={() => setShowCartModal(false)}
-          onOrder={() => console.warn('Order placed!')}
-        />
-      )}
     </div>
   );
 };

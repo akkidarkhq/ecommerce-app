@@ -25,7 +25,10 @@ const ThemeSwitcher = () => {
 
   return (
     <>
-      <button className="btn rounded-5" title="change theme" onClick={toggleTheme}>
+      <button
+        className={`btn border-0 mx-2 rounded-5 ${theme === 'light' ? 'btn-outline-dark' : 'btn-outline-light'}`}
+        title="change theme"
+        onClick={toggleTheme}>
         <i className={theme === 'light' ? 'bi bi-brightness-high-fill' : 'bi bi-moon-stars-fill'}></i>
       </button>
     </>
