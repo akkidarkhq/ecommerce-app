@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import LoginModal from '../login/LoginModal';
+import LoginModal from '../Login/LoginModal';
 
 const HomePage: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
