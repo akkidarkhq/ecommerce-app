@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { AuthProvider } from './context/AuthContext.tsx';
-import Header from './components/layout/header/Header.tsx';
-import Content from './components/layout/content/Content.tsx';
-import Footer from './components/layout/footer/Footer.tsx';
-import ErrorPage from './pages/error/ErrorPage.tsx';
-import { store, persistor } from './store/store.ts';
+import { AuthProvider } from './context/AuthContext';
+import Header from './components/layout/header/Header';
+import Content from './components/layout/content/Content';
+import Footer from './components/layout/footer/Footer';
+import ErrorPage from './pages/error/ErrorPage';
+import { store, persistor } from './store/store';
 
 const CLIENT_ID = '362557444672-hnm4kms5mtck0f67inaoqdbuvjare2bt.apps.googleusercontent.com';
 function App() {
