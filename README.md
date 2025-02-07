@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# 🛍️ E-Commerce Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌟 Overview
+The **E-Commerce Application** is a modern web-based platform that allows users to browse, add items to their cart, and manage purchases seamlessly. With features like **Google OAuth authentication**, **dark mode**, and a **responsive UI**, it ensures a smooth shopping experience. The application also supports persistent cart storage using local storage, ensuring users don’t lose their selections. 🛒
 
-## Available Scripts
+## 🌍 Deployment
+This application is **deployed on Vercel**.
 
-In the project directory, you can run:
+🔗 **Live Application:** [E-Commerce App](https://ecommerce-app-git-dev-akkidarkhqs-projects.vercel.app/)
 
-### `npm start`
+## 🚀 Features
+- 📂 **Category Navigation**: Users can browse products by clicking on categories in the sidebar.
+- 🔎 **Search Functionality**: Users can search for items and filter the displayed products, ensuring a smooth and efficient search experience.
+- 🔐 **Authentication**: Users can log in using Google OAuth.
+- 🌙 **Dark Mode**: Toggle between light and dark themes for better accessibility.
+- 🔍 **Product Details Modal**: View product details in a popup without leaving the page.
+- 📱 **Responsive Design**: Optimized for both mobile and web views.
+- 🛒 **Cart Functionality**: Add/remove items from the cart and persist cart data in local storage.
+- 🎨 **Bootstrap for Styling**: Ensures a clean and modern UI.
+- ❌ **Error Page**: Handles wrong routes with a custom error page.
+- 🔑 **Login Modal**: Users can log in via a modal without redirecting.
+- 🚪 **Logout Functionality**: Securely log out of the application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🛠️ Technologies Used
+- **Frontend**:
+  - 🖥️ HTML
+  - 🎨 CSS
+  - ⚛️ React
+  - 🟦 TypeScript
+  - 🎨 Bootstrap
+  - 🔗 React Router for navigation
+  - 🗂️ React Redux for state management
+- **Development Tools**:
+  - 📏 ESLint for code consistency
+  - ✨ Prettier for code formatting
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## ⚙️ Installation
+To run the project locally, follow these steps:
 
-### `npm test`
+1. **Install dependencies:**
+   ```sh
+   yarn install
+   ```
+   This command installs all the necessary packages required for the project. It reads the `package.json` file and downloads dependencies listed under `dependencies` and `devDependencies`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Start the development server:**
+   ```sh
+   yarn start
+   ```
+   This command starts a local development server and serves the application on `http://localhost:3000/`. Any changes made to the source code will automatically reflect in the browser.
 
-### `npm run build`
+3. **Build the application for production:**
+   ```sh
+   yarn run build
+   ```
+   This command creates an optimized production build of the application. It compiles the code, minifies assets, and generates static files in the `build/` directory, making it ready for deployment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📖 Usage
+- 🏠 Visit the homepage to browse products.
+- 🔑 Log in using Google OAuth for a personalized experience.
+- 🛍️ Click on a product to view details in a modal.
+- 🛒 Add items to your cart, which will be saved even if you refresh the page.
+- 🌙 Toggle between light and dark modes as per preference.
+- ❌ If a wrong URL is entered, an error page will be displayed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## 🤝 Contributing
+For any queries, feel free to reach out at 📧 **akkidarkhq@gmail.com**.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contributions are welcome! Feel free to submit issues and pull requests.
