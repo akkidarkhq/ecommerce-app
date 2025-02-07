@@ -55,11 +55,6 @@ To run the project locally, follow these steps:
    ```
    This command creates an optimized production build of the application. It compiles the code, minifies assets, and generates static files in the `build/` directory, making it ready for deployment.
 
-```sh
-yarn install
-yarn start
-yarn run build
-```
 
 ## 📖 Usage
 - 🏠 Visit the homepage to browse products.
