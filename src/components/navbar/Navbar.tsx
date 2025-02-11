@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
+import { useSelector } from 'react-redux';
 
 import { useAuth } from '../../context/AuthContext';
 import ThemeSwitcher from '../themeSwitcher/ThemeSwitcher';
 import Cart from '../cart/Cart';
+import { selectedCartItems } from '../../utils/cartUtils/cartSlice';
 
 const Navbar: React.FC = () => {
   const { isLoggedIn, login, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [showCartModal, setShowCartModal] = useState(false);
+  const items = useSelector(selectedCartItems).length;
+
   const navigate = useNavigate();
 
   const handleSearchQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -116,9 +120,11 @@ const Navbar: React.FC = () => {
           </div>
           <button className="btn btn-outline-secondary ms-2 position-relative" onClick={() => setShowCartModal(true)}>
             <i className="bi bi-cart"></i>
-            <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-              <span className="visually-hidden">New alerts</span>
-            </span>
+            {items !== 0 && (
+              <span className="position-absolute top-0 start-100 translate-middle px-2 bg-danger border border-light rounded-circle">
+                {items}
+              </span>
+            )}
           </button>
 
           <ThemeSwitcher />
