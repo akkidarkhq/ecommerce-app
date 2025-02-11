@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '../../store/store';
 import { useAuth } from '../../context/AuthContext';
-import { clearCartItems } from '../../utils/cartUtils/cartUtils';
+import { clearCartItems, removeFromCart } from '../../utils/cartUtils/cartUtils';
 
 interface CartProps {
   onClose: () => void;
@@ -20,6 +20,10 @@ const Cart: React.FC<CartProps> = ({ onClose, onOrder }) => {
 
   const handleOrder = () => {
     onOrder();
+  };
+
+  const removeCartItem = (itemId: number) => {
+    removeFromCart(dispatch, itemId);
   };
 
   return (
@@ -40,6 +44,9 @@ const Cart: React.FC<CartProps> = ({ onClose, onOrder }) => {
                       <small>Qty: {item.quantity}</small>
                     </div>
                     <span className="badge bg-primary">${(item.price * item.quantity).toFixed(2)}</span>
+                    <button className="btn btn-sm btn-secondary" onClick={() => removeCartItem(item.id)}>
+                      <i className="bi bi-trash"></i>
+                    </button>
                   </li>
                 ))}
               </ul>
